@@ -4,5 +4,15 @@ module.exports = {
   theme: {
     extend: {},
   },
+  safelist: [
+    {
+      pattern: /(bg|text|border)-(teal|cyan)-(600)/,
+      variants: ['hover'],
+    },
+    {
+      pattern: /(bg|text|border)-(black|white)/,
+      variants: ['hover'],
+    },
+  ],
   plugins: [],
 };
