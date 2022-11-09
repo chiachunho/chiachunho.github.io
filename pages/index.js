@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
+import customImageLoader from '../utils/loader';
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
               className="rounded-full"
               alt="jeffery"
               layout="responsive"
+              loader={customImageLoader}
             ></Image>
           </div>
         </div>
