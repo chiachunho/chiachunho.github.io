@@ -22,12 +22,17 @@ export default function Home() {
             Backend Web development (React, Next.js / Django). With excellent learning abilities, I am able to solve
             problems independently, as well as work well in a team."
         />
+        <meta property="og:image" content="https://jefferyho.cc/images/jeffery.jpeg" />
+        <meta property="og:image:alt" content="Jeffery Chia-Chun Ho" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="2300" />
+        <meta property="og:image:height" content="2300" />
       </Head>
       <div className="container mx-auto min-h-screen flex flex-col lg:flex-row items-center justify-center gap-3 md:gap-6 p-2 md:p-6">
         <div className="w-1/3 md:w-1/3  max-w-[200px]">
           <div className="rounded-full aspect-square leading-[0] shadow-lg">
             <Image
-              src="/jeffery.jpeg"
+              src="/images/jeffery.jpeg"
               height="100%"
               width="100%"
               className="rounded-full"
@@ -62,7 +67,7 @@ export default function Home() {
               primaryColor="teal-600"
               secondaryColor="white"
               icon="person-circle"
-              href="/resume_221109_public.pdf"
+              href="/files/resume_221109_public.pdf"
             >
               Resume
             </LinkButton>
