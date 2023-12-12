@@ -30,7 +30,7 @@ export default function Home() {
       </Head>
       <div className="container mx-auto min-h-screen flex flex-col lg:flex-row items-center justify-center gap-3 md:gap-6 p-2 md:p-6">
         <div className="w-1/3 md:w-1/3  max-w-[200px]">
-          <div className="rounded-full aspect-square leading-[0] shadow-lg">
+          <div className="rounded-full aspect-square leading-[0] shadow-lg border-8 border-white">
             <Image
               src="/images/jeffery.jpeg"
               height="100%"
@@ -95,7 +95,7 @@ function LinkButton({ primaryColor = 'teal-600', secondaryColor = 'white', icon 
     <Link href={href}>
       <a target="_blank" rel="noreferrer noopenner">
         <div
-          className={`py-2 px-3 cursor-pointer rounded-md text-md font-medium transition-all border-2 border-${primaryColor} bg-${secondaryColor} hover:bg-${primaryColor} text-${primaryColor} hover:text-${secondaryColor} `}
+          className={`py-1 px-3 cursor-pointer rounded-2xl text-sm font-medium transition-all border-2 border-${primaryColor} bg-${secondaryColor} hover:bg-${primaryColor} text-${primaryColor} hover:text-${secondaryColor} `}
         >
           <i className={`bi bi-${icon} mr-1`}></i> {children}
         </div>
