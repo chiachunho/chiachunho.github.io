@@ -48,8 +48,7 @@ export default function Home() {
           </h1>
           <p>
             I am researching Fake News Detection using deep learning and I also have experience with Frontend and
-            Backend Web development (React, Next.js / Django). With excellent learning abilities, I am able to solve
-            problems independently, as well as work well in a team.
+            Backend Web development (React, Next.js / Django).
           </p>
           <div className="flex flex-row gap-2 flex-wrap justify-center lg:justify-start">
             <LinkButton primaryColor="black" secondaryColor="white" icon="github" href="https://github.com/chiachunho">
@@ -67,7 +66,7 @@ export default function Home() {
               primaryColor="teal-600"
               secondaryColor="white"
               icon="person-circle"
-              href="/files/resume_221109_public.pdf"
+              href="/files/resume_231212_public.pdf"
             >
               Resume
             </LinkButton>
