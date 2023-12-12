@@ -33,12 +33,13 @@ export default function Home() {
           <div className="rounded-full aspect-square leading-[0] shadow-lg border-8 border-white">
             <Image
               src="/images/jeffery.jpeg"
-              height="100%"
-              width="100%"
               className="rounded-full"
               alt="jeffery"
-              layout="responsive"
+              width={0}
+              height={0}
+              sizes="100vw"
               loader={customImageLoader}
+              unoptimized
             ></Image>
           </div>
         </div>
