@@ -49,15 +49,16 @@ export default function Home() {
               <span className="font-semibold">Jeffery</span> Chia-Chun Ho
             </h1>
             <p>
-              I am researching Fake News Detection using deep learning and I also have experience with Frontend and
-              Backend Web development (React, Next.js / Django).
+              I am primarily a frontend developer with extensive experience in backend development using C# .NET and
+              Django. I specialize in React and Next.js for frontend development and have also researched Fake News
+              Detection using machine learning techniques.
             </p>
             <div className="flex w-full flex-row flex-wrap justify-center gap-2 md:justify-start">
               <LinkButton
                 primaryColor="teal-600"
                 secondaryColor="white"
                 icon="person-circle"
-                href="/files/resume_231212_public.pdf"
+                href="/files/resume_240610_public.pdf"
               >
                 Resume
               </LinkButton>
