@@ -1,7 +1,16 @@
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
 import customImageLoader from '../utils/loader';
+
+type ButtonProps = {
+  primaryColor?: string;
+  secondaryColor?: string;
+  icon?: string;
+  children: ReactNode;
+  href?: string;
+};
 
 export default function Home() {
   return (
@@ -30,7 +39,7 @@ export default function Home() {
       </Head>
       <div className="container mx-auto flex min-h-screen flex-col gap-y-3 p-4 md:p-6">
         <div className="flex h-full grow flex-col items-center justify-center gap-3 md:flex-row md:gap-6">
-          <div className="w-1/3 max-w-[200px]  md:w-1/3">
+          <div className="w-1/3 max-w-[200px] md:w-1/3">
             <div className="aspect-square rounded-full border-8 border-white leading-[0] shadow-lg">
               <Image
                 src="/images/jeffery.jpeg"
@@ -107,9 +116,15 @@ export default function Home() {
   );
 }
 
-function LinkButton({ primaryColor = 'teal-600', secondaryColor = 'white', icon = 'github', children, href = '#' }) {
+function LinkButton({
+  primaryColor = 'teal-600',
+  secondaryColor = 'white',
+  icon = 'github',
+  children,
+  href = '#',
+}: ButtonProps) {
   return (
-    <Link href={href} target="_blank" rel="noreferrer noopenner">
+    <Link href={href} target="_blank" rel="noreferrer noopener">
       <div
         className={`cursor-pointer rounded-2xl border-2 px-3 py-1 text-sm font-medium transition-all border-${primaryColor} bg-${secondaryColor} hover:bg-${primaryColor} text-${primaryColor} hover:text-${secondaryColor} `}
       >
@@ -125,9 +140,9 @@ function QuickLinkButton({
   icon = 'github',
   children,
   href = '#',
-}) {
+}: ButtonProps) {
   return (
-    <Link href={href} target="_blank" rel="noreferrer noopenner">
+    <Link href={href} target="_blank" rel="noreferrer noopener">
       <div
         className={`text-md cursor-pointer rounded-md border-2 px-3 py-1 font-medium transition-all border-${primaryColor} bg-${secondaryColor} hover:bg-${primaryColor} text-${primaryColor} hover:text-${secondaryColor} `}
       >

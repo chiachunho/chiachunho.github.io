@@ -2,6 +2,9 @@
   "name": "jeffery-resume-page",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22.22.1"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,22 +15,27 @@
     "format:fix": "prettier --write --list-different ."
   },
   "dependencies": {
-    "bootstrap-icons": "^1.9.1",
-    "next": "14.0.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "bootstrap-icons": "^1.13.1",
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "eslint": "8.55.0",
-    "eslint-config-next": "14.0.4",
-    "eslint-config-prettier": "^9.1.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^15.2.0",
-    "postcss": "^8.4.14",
-    "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.1.4"
+    "@tailwindcss/postcss": "^4.2.3",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.5.0",
+    "eslint": "10.4.0",
+    "eslint-config-next": "16.2.6",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
+    "postcss": "^8.5.15",
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3"
   },
   "husky": {
     "hooks": {
