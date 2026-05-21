@@ -2,11 +2,28 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
+import { cva, type VariantProps } from 'class-variance-authority';
 import customImageLoader from '../utils/loader';
 
+const buttonVariants = cva('cursor-pointer border-2 px-3 py-1 font-medium transition-all', {
+  variants: {
+    color: {
+      teal: 'border-teal-600 bg-white text-teal-600 hover:bg-teal-600 hover:text-white',
+      cyan: 'border-cyan-600 bg-white text-cyan-600 hover:bg-cyan-600 hover:text-white',
+      black: 'border-black bg-white text-black hover:bg-black hover:text-white',
+    },
+    size: {
+      sm: 'rounded-2xl text-sm',
+      md: 'rounded-md text-base',
+    },
+  },
+  defaultVariants: { color: 'teal', size: 'sm' },
+});
+
+type ButtonVariants = VariantProps<typeof buttonVariants>;
+
 type ButtonProps = {
-  primaryColor?: string;
-  secondaryColor?: string;
+  color?: ButtonVariants['color'];
   icon?: string;
   children: ReactNode;
   href?: string;
@@ -63,20 +80,10 @@ export default function Home() {
               Detection using machine learning techniques.
             </p>
             <div className="flex w-full flex-row flex-wrap justify-center gap-2 md:justify-start">
-              <LinkButton
-                primaryColor="teal-600"
-                secondaryColor="white"
-                icon="person-circle"
-                href="/files/resume_240610_public.pdf"
-              >
+              <LinkButton color="teal" icon="person-circle" href="/files/resume_240610_public.pdf">
                 Resume
               </LinkButton>
-              <LinkButton
-                primaryColor="teal-600"
-                secondaryColor="white"
-                icon="mailbox"
-                href="mailto:chiachun2491@gmail.com"
-              >
+              <LinkButton color="teal" icon="mailbox" href="mailto:chiachun2491@gmail.com">
                 Contact me
               </LinkButton>
             </div>
@@ -85,28 +92,13 @@ export default function Home() {
         <div className="flex flex-col gap-y-3">
           <div className="text-lg font-semibold md:text-xl">Quick Links</div>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
-            <QuickLinkButton
-              primaryColor="black"
-              secondaryColor="white"
-              icon="github"
-              href="https://github.com/chiachunho"
-            >
+            <QuickLinkButton color="black" icon="github" href="https://github.com/chiachunho">
               @chiachunho
             </QuickLinkButton>
-            <QuickLinkButton
-              primaryColor="cyan-600"
-              secondaryColor="white"
-              icon="journal"
-              href="https://blog.jefferyho.cc"
-            >
+            <QuickLinkButton color="cyan" icon="journal" href="https://blog.jefferyho.cc">
               Blog
             </QuickLinkButton>
-            <QuickLinkButton
-              primaryColor="cyan-600"
-              secondaryColor="white"
-              icon="file-slides"
-              href="https://slides.jefferyho.cc"
-            >
+            <QuickLinkButton color="cyan" icon="file-slides" href="https://slides.jefferyho.cc">
               Slides
             </QuickLinkButton>
           </div>
@@ -116,36 +108,20 @@ export default function Home() {
   );
 }
 
-function LinkButton({
-  primaryColor = 'teal-600',
-  secondaryColor = 'white',
-  icon = 'github',
-  children,
-  href = '#',
-}: ButtonProps) {
+function LinkButton({ color, icon = 'github', children, href = '#' }: ButtonProps) {
   return (
     <Link href={href} target="_blank" rel="noreferrer noopener">
-      <div
-        className={`cursor-pointer rounded-2xl border-2 px-3 py-1 text-sm font-medium transition-all border-${primaryColor} bg-${secondaryColor} hover:bg-${primaryColor} text-${primaryColor} hover:text-${secondaryColor} `}
-      >
+      <div className={buttonVariants({ color, size: 'sm' })}>
         <i className={`bi bi-${icon} mr-1`}></i> {children}
       </div>
     </Link>
   );
 }
 
-function QuickLinkButton({
-  primaryColor = 'teal-600',
-  secondaryColor = 'white',
-  icon = 'github',
-  children,
-  href = '#',
-}: ButtonProps) {
+function QuickLinkButton({ color, icon = 'github', children, href = '#' }: ButtonProps) {
   return (
     <Link href={href} target="_blank" rel="noreferrer noopener">
-      <div
-        className={`text-md cursor-pointer rounded-md border-2 px-3 py-1 font-medium transition-all border-${primaryColor} bg-${secondaryColor} hover:bg-${primaryColor} text-${primaryColor} hover:text-${secondaryColor} `}
-      >
+      <div className={buttonVariants({ color, size: 'md' })}>
         <i className={`bi bi-${icon} mr-1`}></i> {children}
       </div>
     </Link>
