@@ -1,12 +1,6 @@
 import { cn } from '@/lib/utils';
-
-const CONTACT_LINKS = [
-  { href: 'mailto:chiachun2491@gmail.com', label: 'chiachun2491@gmail.com' },
-  { href: 'https://github.com/chiachunho', label: 'github.com/chiachunho', external: true },
-  { href: 'https://www.linkedin.com/in/jefferyho-cc/', label: 'linkedin.com/in/jefferyho-cc', external: true },
-  { href: 'https://blog.jefferyho.cc', label: 'blog.jefferyho.cc', external: true },
-  { href: '/files/resume_240610_public.pdf', label: 'résumé · PDF' },
-];
+import { CONTACT_LINKS } from '@/data/contact';
+import { PROFILE } from '@/data/profile';
 
 export default function Sidebar() {
   return (
@@ -17,16 +11,14 @@ export default function Sidebar() {
     >
       <div
         className="h-24 w-24 rounded-full bg-[#d9d3c5] bg-cover bg-center"
-        style={{ backgroundImage: "url('https://jefferyho.cc/images/jeffery.jpeg')" }}
+        style={{ backgroundImage: `url('${PROFILE.portrait}')` }}
         aria-hidden="true"
       />
       <p
         className="border-border text-foreground m-0 border-t pt-6 leading-[1.55]"
         style={{ fontSize: 'clamp(16px, 1.4vw, 18px)' }}
       >
-        I&apos;m a frontend-focused engineer at TrendAI who gets genuinely excited about data analytics and
-        visualization. I&apos;ve spent two-plus years building products at the intersection of data and user experience
-        — from configurable dashboards to vulnerability-management UIs built from scratch.
+        {PROFILE.bio}
       </p>
       <div className="border-border grid gap-2 border-t pt-6">
         {CONTACT_LINKS.map(({ href, label, external }) => (
