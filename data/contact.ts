@@ -9,5 +9,5 @@ export const CONTACT_LINKS: ContactLink[] = [
   { href: 'https://github.com/chiachunho', label: 'github.com/chiachunho', external: true },
   { href: 'https://www.linkedin.com/in/jefferyho-cc/', label: 'linkedin.com/in/jefferyho-cc', external: true },
   { href: 'https://blog.jefferyho.cc', label: 'blog.jefferyho.cc', external: true },
-  { href: '/files/resume_240610_public.pdf', label: 'résumé · PDF' },
+  { href: '/files/resume_240610_public.pdf', label: 'resume · PDF' },
 ];
