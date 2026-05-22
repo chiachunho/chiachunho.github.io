@@ -1,3 +1,5 @@
+import { cn } from '@/lib/utils';
+
 export default function ThemeToggle() {
   const toggle = () => {
     const r = document.documentElement;
@@ -15,13 +17,14 @@ export default function ThemeToggle() {
       type="button"
       aria-label="Toggle light/dark mode"
       onClick={toggle}
-      className="fixed z-50 inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border p-0 transition-[border-color,transform] duration-200 hover:border-[var(--ink)] active:scale-95"
+      className={cn(
+        'fixed z-50 inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border p-0',
+        'bg-background text-foreground border-border-strong',
+        'hover:border-foreground transition-[border-color,transform] duration-200 active:scale-95',
+      )}
       style={{
         top: 'clamp(16px, 2.4vw, 28px)',
         right: 'clamp(16px, 2.4vw, 28px)',
-        background: 'var(--bg)',
-        borderColor: 'var(--rule-strong)',
-        color: 'var(--ink)',
       }}
     >
       <svg

@@ -1,3 +1,5 @@
+import { cn } from '@/lib/utils';
+
 const CONTACT_LINKS = [
   { href: 'mailto:chiachun2491@gmail.com', label: 'chiachun2491@gmail.com' },
   { href: 'https://github.com/chiachunho', label: 'github.com/chiachunho', external: true },
@@ -19,28 +21,26 @@ export default function Sidebar() {
         aria-hidden="true"
       />
       <p
-        className="m-0 border-t pt-6 leading-[1.55]"
-        style={{
-          fontSize: 'clamp(16px, 1.4vw, 18px)',
-          color: 'var(--ink)',
-          borderColor: 'var(--rule)',
-        }}
+        className="border-border text-foreground m-0 border-t pt-6 leading-[1.55]"
+        style={{ fontSize: 'clamp(16px, 1.4vw, 18px)' }}
       >
         I&apos;m a frontend-focused engineer at TrendAI who gets genuinely excited about data analytics and
         visualization. I&apos;ve spent two-plus years building products at the intersection of data and user experience
         — from configurable dashboards to vulnerability-management UIs built from scratch.
       </p>
-      <div className="grid gap-2 border-t pt-6" style={{ borderColor: 'var(--rule)' }}>
+      <div className="border-border grid gap-2 border-t pt-6">
         {CONTACT_LINKS.map(({ href, label, external }) => (
           <a
             key={href}
             href={href}
-            className="inline-flex gap-2 text-[14px] no-underline transition-opacity duration-200 hover:opacity-60"
-            style={{ color: 'var(--ink)' }}
+            className={cn(
+              'inline-flex gap-2 text-[14px] no-underline transition-opacity duration-200',
+              'text-foreground hover:opacity-60',
+            )}
             {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
             {label}
-            <span style={{ color: 'var(--mute)' }}>↗</span>
+            <span className="text-muted-foreground">↗</span>
           </a>
         ))}
       </div>

@@ -1,34 +1,46 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
-/* ── color tokens ─────────────────────────────────── */
+/* ── Tailwind v4 theme tokens ──────────────────────────── */
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-body: var(--body);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+}
+
+/* ── color tokens ──────────────────────────────────────── */
 :root {
-  --bg: #ffffff;
-  --ink: #111111;
+  --background: #ffffff;
+  --foreground: #111111;
   --body: #3a3a3a;
-  --mute: #8a8a8a;
-  --rule: rgba(17, 17, 17, 0.1);
-  --rule-strong: rgba(17, 17, 17, 0.18);
+  --muted-foreground: #8a8a8a;
+  --border: rgba(17, 17, 17, 0.1);
+  --border-strong: rgba(17, 17, 17, 0.18);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #0a0a0a;
-    --ink: #f5f5f5;
+    --background: #0a0a0a;
+    --foreground: #f5f5f5;
     --body: #b8b8b8;
-    --mute: #7a7a7a;
-    --rule: rgba(245, 245, 245, 0.1);
-    --rule-strong: rgba(245, 245, 245, 0.2);
+    --muted-foreground: #7a7a7a;
+    --border: rgba(245, 245, 245, 0.1);
+    --border-strong: rgba(245, 245, 245, 0.2);
   }
 }
 :root[data-theme='dark'] {
-  --bg: #0a0a0a;
-  --ink: #f5f5f5;
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
   --body: #b8b8b8;
-  --mute: #7a7a7a;
-  --rule: rgba(245, 245, 245, 0.1);
-  --rule-strong: rgba(245, 245, 245, 0.2);
+  --muted-foreground: #7a7a7a;
+  --border: rgba(245, 245, 245, 0.1);
+  --border-strong: rgba(245, 245, 245, 0.2);
 }
 
+/* ── base ──────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -38,8 +50,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--background);
+  color: var(--foreground);
   font-family:
     'Geist',
     -apple-system,
@@ -54,13 +66,14 @@ body {
     color 0.25s ease;
 }
 a {
-  color: var(--ink);
+  color: var(--foreground);
 }
 ::selection {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--foreground);
+  color: var(--background);
 }
 
+/* ── theme toggle icons ────────────────────────────────── */
 .icon-moon {
   display: inline;
 }

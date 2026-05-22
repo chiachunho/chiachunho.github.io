@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import type { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 import ThemeToggle from '../components/ThemeToggle';
 import TopBar from '../components/TopBar';
 import Sidebar from '../components/Sidebar';
@@ -8,10 +9,7 @@ import Sidebar from '../components/Sidebar';
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <div
-      className="mb-7 border-b pb-4 text-[12px] font-medium tracking-[0.01em]"
-      style={{ color: 'var(--ink)', borderColor: 'var(--rule)' }}
-    >
+    <div className="border-border text-foreground mb-7 border-b pb-4 text-[12px] font-medium tracking-[0.01em]">
       {children}
     </div>
   );
@@ -20,8 +18,11 @@ function SectionLabel({ children }: { children: ReactNode }) {
 function Entry({ left, right }: { left: ReactNode; right: ReactNode }) {
   return (
     <article
-      className="grid grid-cols-1 gap-4 border-t py-7 first:border-t-0 first:pt-1 min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] min-[900px]:gap-[clamp(28px,4vw,56px)]"
-      style={{ borderColor: 'var(--rule)' }}
+      className={cn(
+        'border-border grid grid-cols-1 gap-4 border-t py-7',
+        'first:border-t-0 first:pt-1',
+        'min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] min-[900px]:gap-[clamp(28px,4vw,56px)]',
+      )}
     >
       <div>{left}</div>
       <div>{right}</div>
@@ -32,8 +33,8 @@ function Entry({ left, right }: { left: ReactNode; right: ReactNode }) {
 function EntryTitle({ children }: { children: ReactNode }) {
   return (
     <h3
-      className="m-0 font-medium tracking-[-0.018em]"
-      style={{ fontSize: 'clamp(18px, 1.9vw, 22px)', color: 'var(--ink)' }}
+      className="text-foreground m-0 font-medium tracking-[-0.018em]"
+      style={{ fontSize: 'clamp(18px, 1.9vw, 22px)' }}
     >
       {children}
     </h3>
@@ -42,7 +43,7 @@ function EntryTitle({ children }: { children: ReactNode }) {
 
 function MetaLine({ children, first = false }: { children: ReactNode; first?: boolean }) {
   return (
-    <div className="text-[14px]" style={{ color: 'var(--mute)', marginTop: first ? '12px' : '4px' }}>
+    <div className="text-muted-foreground text-[14px]" style={{ marginTop: first ? '12px' : '4px' }}>
       {children}
     </div>
   );
@@ -50,7 +51,7 @@ function MetaLine({ children, first = false }: { children: ReactNode; first?: bo
 
 function SubEntry({ children }: { children: ReactNode }) {
   return (
-    <div className="mt-1 text-[clamp(16px,1.7vw,18px)]" style={{ color: 'var(--body)' }}>
+    <div className="text-body mt-1" style={{ fontSize: 'clamp(16px,1.7vw,18px)' }}>
       {children}
     </div>
   );
@@ -59,31 +60,25 @@ function SubEntry({ children }: { children: ReactNode }) {
 function RoleBlock({ title, meta, bullets }: { title: string; meta?: string; bullets: ReactNode[] }) {
   return (
     <div
-      className="[&:not(:first-child)]:border-t [&:not(:first-child)]:border-dashed [&:not(:first-child)]:pt-7"
-      style={{ borderColor: 'var(--rule)' }}
+      className={cn(
+        '[&:not(:first-child)]:border-border [&:not(:first-child)]:border-t [&:not(:first-child)]:border-dashed',
+        '[&:not(:first-child)]:pt-7',
+      )}
     >
       <h4
-        className="m-0 font-medium tracking-[-0.015em]"
-        style={{ fontSize: 'clamp(16px, 1.5vw, 18px)', color: 'var(--ink)' }}
+        className="text-foreground m-0 font-medium tracking-[-0.015em]"
+        style={{ fontSize: 'clamp(16px, 1.5vw, 18px)' }}
       >
         {title}
       </h4>
-      {meta && (
-        <div className="mt-1 text-[12px] tracking-[-0.005em]" style={{ color: 'var(--mute)' }}>
-          {meta}
-        </div>
-      )}
+      {meta && <div className="text-muted-foreground mt-1 text-[12px] tracking-[-0.005em]">{meta}</div>}
       <ul
-        className="m-0 mt-4 grid list-none gap-4 p-0"
-        style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.55, color: 'var(--body)' }}
+        className="text-body m-0 mt-4 grid list-none gap-4 p-0"
+        style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.55 }}
       >
         {bullets.map((b, i) => (
           <li key={i} className="relative pl-5">
-            <span
-              aria-hidden="true"
-              className="absolute left-0 block h-px w-2"
-              style={{ top: '0.65em', background: 'var(--body)' }}
-            />
+            <span aria-hidden="true" className="bg-body absolute top-[0.65em] left-0 block h-px w-2" />
             {b}
           </li>
         ))}
@@ -136,7 +131,7 @@ export default function Home() {
                           rel="noopener noreferrer"
                           style={{ textDecoration: 'none', color: 'inherit' }}
                         >
-                          TrendAI <span style={{ color: 'var(--mute)' }}>↗</span>
+                          TrendAI <span className="text-muted-foreground">↗</span>
                         </a>
                       </EntryTitle>
                       <MetaLine first>December 2023 – Present</MetaLine>
@@ -275,10 +270,8 @@ export default function Home() {
                   },
                 ].map(({ heading, items }) => (
                   <div key={heading}>
-                    <h4 className="m-0 mb-3 text-[16px] font-medium tracking-[-0.01em]" style={{ color: 'var(--ink)' }}>
-                      {heading}
-                    </h4>
-                    <ul className="m-0 list-none p-0 text-[14px] leading-[1.85]" style={{ color: 'var(--body)' }}>
+                    <h4 className="text-foreground m-0 mb-3 text-[16px] font-medium tracking-[-0.01em]">{heading}</h4>
+                    <ul className="text-body m-0 list-none p-0 text-[14px] leading-[1.85]">
                       {items.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -297,14 +290,11 @@ export default function Home() {
                     <>
                       <EntryTitle>Leveraging Supplementary Information for Multi-Modal Fake News Detection</EntryTitle>
                       <MetaLine first>2023 · Master&apos;s thesis</MetaLine>
-                      <MetaLine>PyTorch · BERT · Multi-modal attention</MetaLine>
+                      <MetaLine>Multi-modal attention</MetaLine>
                     </>
                   }
                   right={
-                    <p
-                      className="m-0 leading-[1.55]"
-                      style={{ fontSize: 'clamp(14px,1.6vw,16px)', color: 'var(--body)' }}
-                    >
+                    <p className="text-body m-0 leading-[1.55]" style={{ fontSize: 'clamp(14px,1.6vw,16px)' }}>
                       Image-captioning generates supplementary text for news images; multi-head attention learns
                       inter-dependencies across modalities. Outperforms state-of-the-art baselines on three real-world
                       datasets.
@@ -322,10 +312,7 @@ export default function Home() {
                     </>
                   }
                   right={
-                    <p
-                      className="m-0 leading-[1.55]"
-                      style={{ fontSize: 'clamp(14px,1.6vw,16px)', color: 'var(--body)' }}
-                    >
+                    <p className="text-body m-0 leading-[1.55]" style={{ fontSize: 'clamp(14px,1.6vw,16px)' }}>
                       Co-authored work on a budget-aware greedy algorithm for maximising profit when seeding multiple
                       products simultaneously through a social network.
                     </p>
@@ -348,10 +335,10 @@ export default function Home() {
                   }
                   right={
                     <div>
-                      <div className="text-[clamp(16px,1.7vw,18px)]" style={{ color: 'var(--body)' }}>
+                      <div className="text-body" style={{ fontSize: 'clamp(16px,1.7vw,18px)' }}>
                         M.S. in Computer Science
                       </div>
-                      <div className="mt-1 text-[14px]" style={{ color: 'var(--mute)' }}>
+                      <div className="text-muted-foreground mt-1 text-[14px]">
                         Thesis: Leveraging Supplementary Information for Multi-Modal Fake News Detection.
                       </div>
                     </div>
@@ -366,7 +353,7 @@ export default function Home() {
                     </>
                   }
                   right={
-                    <div className="text-[clamp(16px,1.7vw,18px)]" style={{ color: 'var(--body)' }}>
+                    <div className="text-body" style={{ fontSize: 'clamp(16px,1.7vw,18px)' }}>
                       B.S. in Computer Science
                     </div>
                   }
@@ -378,12 +365,10 @@ export default function Home() {
       </div>
 
       <footer
-        className="mx-auto flex max-w-[1440px] flex-wrap justify-between gap-4 border-t text-[12px]"
+        className="border-border text-muted-foreground mx-auto flex max-w-[1440px] flex-wrap justify-between gap-4 border-t text-[12px]"
         style={{
           padding: '32px clamp(20px,5vw,56px) 56px',
           marginTop: 'clamp(80px,10vw,120px)',
-          color: 'var(--mute)',
-          borderColor: 'var(--rule)',
         }}
       >
         <span>© Jeffery Ho · 2026</span>
